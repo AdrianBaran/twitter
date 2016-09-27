@@ -15,17 +15,13 @@ public class App {
 	public static void main(String[] args) {
 
 		RestTemplate restTemplate = new RestTemplate();
-		
 		ResponseEntity<Post[]> httpEntity = restTemplate.getForEntity(API_ENDPOINT, Post[].class);
-		
 		Post[] resp = httpEntity.getBody();
 		
 		List<Post> postsList = new ArrayList<Post>(Arrays.asList(resp));
-	
 		postsList.add(new Post(100, 10, "Adrian", "Baran"));
 		
 		for (Post post : postsList) {
-			
 			System.out.println(post.getTitle());
 		}
 	}
