@@ -1,13 +1,11 @@
 package com.gmail.adrianbaran.twitter;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+import org.springframework.web.client.RestTemplate;
+
+public class App {
+	public static void main(String[] args) {
+			
+		RestTemplate restTemplate = new RestTemplate();
+	
+	}
 }
