@@ -1,11 +1,12 @@
 package com.gmail.adrianbaran.twitter;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 public class App {
 
@@ -15,12 +16,16 @@ public class App {
 
 		RestTemplate restTemplate = new RestTemplate();
 		
-		ResponseEntity<Post[]> httpEntity = restTemplate.getForEntity(
-				API_ENDPOINT, Post[].class);
-		Post[] resp = httpEntity.getBody();
-
+		ResponseEntity<Post[]> httpEntity = restTemplate.getForEntity(API_ENDPOINT, Post[].class);
 		
-		for (Post post : resp) {
+		Post[] resp = httpEntity.getBody();
+		
+		List<Post> postsList = new ArrayList<Post>(Arrays.asList(resp));
+	
+		postsList.add(new Post(100, 10, "Adrian", "Baran"));
+		
+		for (Post post : postsList) {
+			
 			System.out.println(post.getTitle());
 		}
 	}
